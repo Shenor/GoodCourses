@@ -10,26 +10,26 @@
 		<div class="hobbies">
 			<table class="table table-bordered">
 				<tbody>
-					<tr>
-						<td><i class="fa fa-heart"></i></td>
-						<td>Computer games</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-heart"></i></td>
-						<td>Football</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-heart"></i></td>
-						<td>Handball</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-heart"></i></td>
-						<td>Shooting</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-heart"></i></td>
-						<td>Skateboarding</td>
-					</tr>
+				<tr>
+					<td><i class="fa fa-heart"></i></td>
+					<td>Computer games</td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-heart"></i></td>
+					<td>Football</td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-heart"></i></td>
+					<td>Handball</td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-heart"></i></td>
+					<td>Shooting</td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-heart"></i></td>
+					<td>Skateboarding</td>
+				</tr>
 				</tbody>
 			</table>
 		</div>

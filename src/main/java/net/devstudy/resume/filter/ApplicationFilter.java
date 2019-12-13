@@ -13,13 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * 
  * @author devstudy
  * @see http://devstudy.net
  */
-@WebFilter("/*")
+@Component
 public class ApplicationFilter implements Filter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationFilter.class);
 	public void init(FilterConfig filterConfig) throws ServletException {
