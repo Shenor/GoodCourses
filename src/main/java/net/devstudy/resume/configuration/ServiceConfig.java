@@ -23,9 +23,9 @@ public class ServiceConfig {
 	/**
 	 * http://docs.spring.io/autorepo/docs/spring/4.2.5.RELEASE/spring-framework-reference/html/beans.html
 	 * 
-	 * Also, be particularly careful with BeanPostProcessor and BeanFactoryPostProcessor definitions via @Bean. 
-	 * Those should usually be declared as static @Bean methods, not triggering the instantiation of their containing configuration class. 
-	 * Otherwise, @Autowired and @Value won’t work on the configuration class itself since it is being created as a bean instance too early.
+	 * Also, be particularly careful with BeanPostProcessor and BeanFactoryPostProcessor definitions via @Bean.
+	 * Those should usually be declared as static @Bean methods, not triggering the instantiation of their containing configuration class.
+	 * Otherwise, @Autowired and @Value wonâ€™t work on the configuration class itself since it is being created as a bean instance too early.
 	 */
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() throws IOException {
@@ -33,8 +33,8 @@ public class ServiceConfig {
 		conf.setLocations(getResources());
 		return conf;
 	}
-	
+
 	private static Resource[] getResources(){
-		return new Resource[] {new ClassPathResource("application.properties")};
+		return new Resource[] {new ClassPathResource("application.properties"), new ClassPathResource("logic.properties")};
 	}
 }
