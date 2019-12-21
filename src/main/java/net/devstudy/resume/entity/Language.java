@@ -15,11 +15,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import net.devstudy.resume.model.LanguageLevel;
 import net.devstudy.resume.model.LanguageType;
 
 /**
- * 
+ *
  * @author devstudy
  * @see http://devstudy.net
  */
@@ -40,7 +42,7 @@ public class Language extends AbstractEntity<Long> implements Serializable, Prof
 
 	@Column(nullable=false, length=30)
 	private String name;
-	
+
 	@Column
 	@Convert(converter = LanguageType.PersistJPAConverter.class)
 	private LanguageType type;
@@ -48,6 +50,7 @@ public class Language extends AbstractEntity<Long> implements Serializable, Prof
 	//bi-directional many-to-one association to Profile
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_profile", nullable=false)
+	@JsonIgnore
 	private Profile profile;
 
 	public Language() {
@@ -92,7 +95,7 @@ public class Language extends AbstractEntity<Long> implements Serializable, Prof
 	public void setType(LanguageType type) {
 		this.type = type;
 	}
-	
+
 	@Transient
 	public boolean isHasLanguageType(){
 		return type != LanguageType.ALL;

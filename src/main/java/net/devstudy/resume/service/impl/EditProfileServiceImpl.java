@@ -1,5 +1,6 @@
 package net.devstudy.resume.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -10,26 +11,33 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import net.devstudy.resume.entity.Profile;
 import net.devstudy.resume.entity.Skill;
 import net.devstudy.resume.entity.SkillCategory;
 import net.devstudy.resume.exception.CantCompleteClientRequestException;
 import net.devstudy.resume.form.SignUpForm;
+import net.devstudy.resume.repository.search.ProfileSearchRepository;
 import net.devstudy.resume.repository.storage.ProfileRepository;
 import net.devstudy.resume.repository.storage.SkillCategoryRepository;
 import net.devstudy.resume.service.EditProfileService;
 import net.devstudy.resume.util.DataUtil;
 
 @Service
+@SuppressWarnings("unchecked")
 public class EditProfileServiceImpl implements EditProfileService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EditProfileServiceImpl.class);
 	@Autowired
 	private ProfileRepository profileRepository;
-	
+
+	@Autowired
+	private ProfileSearchRepository profileSearchRepository;
+
 	@Autowired
 	private SkillCategoryRepository skillCategoryRepository;
-	
+
 	@Value("${generate.uid.suffix.length}")
 	private int generateUidSuffixLength;
 
@@ -38,7 +46,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 
 	@Value("${generate.uid.max.try.count}")
 	private int maxTryCountToGenerateUid;
-	
+
 	@Override
 	@Transactional
 	public Profile createNewProfile(SignUpForm signUpForm) {
@@ -49,6 +57,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 		profile.setPassword(signUpForm.getPassword());
 		profile.setCompleted(false);
 		profileRepository.save(profile);
+		registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfcess(profile);
 		return profile;
 	}
 
@@ -64,6 +73,22 @@ public class EditProfileServiceImpl implements EditProfileService {
 		return uid;
 	}
 
+	private void registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfcess(final Profile profile) {
+		TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+			@Override
+			public void afterCommit() {
+				LOGGER.info("New profile created: {}", profile.getUid());
+				profile.setCertificates(Collections.EMPTY_LIST);
+				profile.setPractics(Collections.EMPTY_LIST);
+				profile.setLanguages(Collections.EMPTY_LIST);
+				profile.setSkills(Collections.EMPTY_LIST);
+				profile.setCourses(Collections.EMPTY_LIST);
+				profileSearchRepository.save(profile);
+				LOGGER.info("New profile index created: {}", profile.getUid());
+			}
+		});
+	}
+
 	@Override
 	public List<Skill> listSkills(long idProfile) {
 		return profileRepository.findOne(idProfile).getSkills();
@@ -73,7 +98,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 	public List<SkillCategory> listSkillCategories() {
 		return skillCategoryRepository.findAll(new Sort("id"));
 	}
-	
+
 	@Override
 	@Transactional
 	public void updateSkills(long idProfile, List<Skill> updatedData) {
@@ -84,6 +109,24 @@ public class EditProfileServiceImpl implements EditProfileService {
 		} else {
 			profile.setSkills(updatedData);
 			profileRepository.save(profile);
+			registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfvyjckc2Pess(idProfile, updatedData);
 		}
+	}
+
+	private void registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfvyjckc2Pess(final long idProfile, final List<Skill> updatedData) {
+		TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+			@Override
+			public void afterCommit() {
+				LOGGER.info("Profile skills updated");
+				updateIndexProfileSkills(idProfile, updatedData);
+			}
+		});
+	}
+
+	private void updateIndexProfileSkills(long idProfile, List<Skill> updatedData) {
+		Profile profile = profileSearchRepository.findOne(idProfile);
+		profile.setSkills(updatedData);
+		profileSearchRepository.save(profile);
+		LOGGER.info("Profile skills index updated");
 	}
 }

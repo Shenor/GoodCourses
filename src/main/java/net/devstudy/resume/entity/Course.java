@@ -13,8 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
- * 
+ *
  * @author devstudy
  * @see http://devstudy.net
  */
@@ -28,16 +30,17 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COURSE_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
 	private Long id;
-	
+
 	@Column(length=60)
 	private String name;
-	
+
 	@Column(length=60)
 	private String school;
-	
+
 	// bi-directional many-to-one association to Profile
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_profile", nullable = false)
+	@JsonIgnore
 	private Profile profile;
 
 	public Long getId() {
