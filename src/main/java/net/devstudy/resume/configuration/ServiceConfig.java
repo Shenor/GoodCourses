@@ -10,19 +10,18 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
- * 
+ *
  * @author devstudy
  * @see http://devstudy.net
  */
 @Configuration
-@ComponentScan({ "net.devstudy.resume.service.impl", 
-				 "net.devstudy.resume.controller",
-				 "net.devstudy.resume.filter", 
-				 "net.devstudy.resume.listener"})
+@ComponentScan({ "net.devstudy.resume.service.impl",
+		"net.devstudy.resume.filter",
+		"net.devstudy.resume.component.impl"})
 public class ServiceConfig {
 	/**
 	 * http://docs.spring.io/autorepo/docs/spring/4.2.5.RELEASE/spring-framework-reference/html/beans.html
-	 * 
+	 *
 	 * Also, be particularly careful with BeanPostProcessor and BeanFactoryPostProcessor definitions via @Bean.
 	 * Those should usually be declared as static @Bean methods, not triggering the instantiation of their containing configuration class.
 	 * Otherwise, @Autowired and @Value won’t work on the configuration class itself since it is being created as a bean instance too early.
