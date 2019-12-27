@@ -7,11 +7,11 @@
 		<jsp:include page="fragment/profile-items.jsp" />
 	</div>
 	<c:if test="${page.number < page.totalPages - 1}">
-	<div id="loadMoreContainer" class="col-xs-12 text-center">
-		<a href="javascript:resume.moreProfiles();" class="btn btn-primary">Load more</a>
-	</div>
-	<div id="loadMoreIndicator" class="col-xs-12 text-center" style="display:none;">
-		<img src="${pageContext.request.contextPath}/static/img/large-loading.gif" alt="loading..."/>
-	</div>
+		<div id="loadMoreContainer" class="col-xs-12 text-center">
+			<a href="javascript:resume.moreProfiles();" class="btn btn-primary">Load more</a>
+		</div>
+		<div id="loadMoreIndicator" class="col-xs-12 text-center" style="display:none;">
+			<img src="${pageContext.request.contextPath}/static/img/large-loading.gif" alt="loading..."/>
+		</div>
 	</c:if>
 </div>

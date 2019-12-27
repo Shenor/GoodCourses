@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpSession;
 
+import net.devstudy.resume.entity.Course;
+import net.devstudy.resume.service.FindCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +31,9 @@ public class PublicDataController {
 	@Autowired
 	private FindProfileService findProfileService;
 
+	@Autowired
+	private FindCourseService findCourseService;
+
 	@RequestMapping(value="/{uid}", method=RequestMethod.GET)
 	public String getProfile(@PathVariable("uid") String uid, Model model){
 		Profile profile = findProfileService.findByUid(uid);
@@ -44,12 +49,20 @@ public class PublicDataController {
 		return "error";
 	}
 
-	@RequestMapping(value = { "/welcome" })
+	@RequestMapping(value = { "/welcome-profiles" })
 	public String listAll(Model model) {
 		Page<Profile> profiles = findProfileService.findAll(new PageRequest(0, Constants.MAX_PROFILES_PER_PAGE, new Sort("id")));
 		model.addAttribute("profiles", profiles.getContent());
 		model.addAttribute("page", profiles);
 		return "profiles";
+	}
+
+	@RequestMapping(value = { "/welcome-courses" })
+	public String courseAll(Model model) {
+		Page<Course> courses = findCourseService.findAll(new PageRequest(0, Constants.MAX_PROFILES_PER_PAGE, new Sort("id")));
+ 		model.addAttribute("courses", courses.getContent());
+		model.addAttribute("page", courses);
+		return "courses";
 	}
 
 	@RequestMapping(value = "/fragment/more", method = RequestMethod.GET)
