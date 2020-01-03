@@ -3,20 +3,12 @@ package net.devstudy.resume.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
@@ -119,9 +111,17 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	@OrderBy("id ASC")
 	private List<Skill> skills;
 
-	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@OrderBy("finishDate DESC")
-	private List<Course> courses;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "course_profile",
+            joinColumns = @JoinColumn(name = "profile_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+	private List<Course> courses = new ArrayList<>();
+
+    public List<Course> getCourses () {
+        return courses;
+    }
 
 	@Embedded
 	private Contacts contacts;
@@ -253,15 +253,6 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
 		updateListSetProfile(this.skills);
-	}
-
-	public List<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
-		updateListSetProfile(this.courses);
 	}
 
 	public String getLargePhoto() {

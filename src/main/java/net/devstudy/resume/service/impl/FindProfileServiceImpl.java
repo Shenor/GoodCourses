@@ -46,7 +46,7 @@ public class FindProfileServiceImpl implements FindProfileService, UserDetailsSe
 			p.getCertificates().size();
 			p.getLanguages().size();
 			p.getPractics().size();
-			p.getCourses().size();
+//			p.getCourses().size();
 		}
 		return all;
 	}

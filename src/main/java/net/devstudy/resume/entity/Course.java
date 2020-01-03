@@ -1,19 +1,15 @@
 package net.devstudy.resume.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -22,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "course")
-public class Course extends AbstractFinishDateEntity<Long> implements Serializable, ProfileEntity {
+public class Course extends AbstractFinishDateEntity<Long> implements Serializable {
 	private static final long serialVersionUID = 4206575925684228495L;
 
 	@Id
@@ -37,11 +33,16 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
 	@Column(length=60)
 	private String school;
 
-	// bi-directional many-to-one association to Profile
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_profile", nullable = false)
-	@JsonIgnore
-	private Profile profile;
+
+    @ManyToMany
+    @JoinTable(name = "course_profile",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "profile_id"))
+	private List<Profile> profiles = new ArrayList<>();
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
 
 	public Long getId() {
 		return id;
@@ -67,13 +68,13 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
 		this.school = school;
 	}
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
+//	public Profile getProfile() {
+//		return profile;
+//	}
+//
+//	public void setProfile(Profile profile) {
+//		this.profile = profile;
+//	}
 
 	@Override
 	public int hashCode() {
