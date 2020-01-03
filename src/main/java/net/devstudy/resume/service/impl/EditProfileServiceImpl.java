@@ -57,7 +57,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 		profile.setPassword(signUpForm.getPassword());
 		profile.setCompleted(false);
 		profileRepository.save(profile);
-		registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfcess(profile);
+		registerCreateIndexProfileIfTrancationSuccess(profile);
 		return profile;
 	}
 
@@ -73,7 +73,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 		return uid;
 	}
 
-	private void registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfcess(final Profile profile) {
+	private void registerCreateIndexProfileIfTrancationSuccess(final Profile profile) {
 		TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
 			@Override
 			public void afterCommit() {
@@ -82,7 +82,7 @@ public class EditProfileServiceImpl implements EditProfileService {
 				profile.setPractics(Collections.EMPTY_LIST);
 				profile.setLanguages(Collections.EMPTY_LIST);
 				profile.setSkills(Collections.EMPTY_LIST);
-				profile.setCourses(Collections.EMPTY_LIST);
+//				profile.setCourses(Collections.EMPTY_LIST);
 				profileSearchRepository.save(profile);
 				LOGGER.info("New profile index created: {}", profile.getUid());
 			}
@@ -109,11 +109,11 @@ public class EditProfileServiceImpl implements EditProfileService {
 		} else {
 			profile.setSkills(updatedData);
 			profileRepository.save(profile);
-			registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfvyjckc2Pess(idProfile, updatedData);
+			registerUpdateIndexProfileSkillsIfTransactionSuccess(idProfile, updatedData);
 		}
 	}
 
-	private void registerHCVWF2a1VjLA7mi6xzoWzhDSRGE9WVQYfvyjckc2Pess(final long idProfile, final List<Skill> updatedData) {
+	private void registerUpdateIndexProfileSkillsIfTransactionSuccess(final long idProfile, final List<Skill> updatedData) {
 		TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
 			@Override
 			public void afterCommit() {
