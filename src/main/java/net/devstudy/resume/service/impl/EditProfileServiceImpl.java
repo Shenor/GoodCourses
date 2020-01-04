@@ -82,7 +82,6 @@ public class EditProfileServiceImpl implements EditProfileService {
 				profile.setPractics(Collections.EMPTY_LIST);
 				profile.setLanguages(Collections.EMPTY_LIST);
 				profile.setSkills(Collections.EMPTY_LIST);
-//				profile.setCourses(Collections.EMPTY_LIST);
 				profileSearchRepository.save(profile);
 				LOGGER.info("New profile index created: {}", profile.getUid());
 			}
