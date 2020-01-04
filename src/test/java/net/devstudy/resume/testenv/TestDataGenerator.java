@@ -327,15 +327,15 @@ public class TestDataGenerator {
 
 	private static void insertCourses(Connection c) throws SQLException {
 		if (r.nextBoolean()) {
-			PreparedStatement ps = c.prepareStatement("insert into course values (nextval('course_seq'),?,?,?,?)");
-			ps.setLong(1, idProfile);
-			ps.setString(2, "Java Advanced Course");
-			ps.setString(3, "SourceIt");
+			PreparedStatement ps = c.prepareStatement("insert into course values (nextval('course_seq'),?,?,?)");
+//			ps.setLong(1, idProfile);
+			ps.setString(1, "Java Advanced Course");
+			ps.setString(2, "SourceIt");
 			Date finish = randomFinishEducation();
 			if (finish.getTime() > System.currentTimeMillis()) {
-				ps.setNull(4, Types.DATE);
+				ps.setNull(3, Types.DATE);
 			} else {
-				ps.setDate(4, finish);
+				ps.setDate(3, finish);
 			}
 			ps.executeUpdate();
 			ps.close();
