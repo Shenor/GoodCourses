@@ -6,7 +6,7 @@
         <div class="media panel-body">
             <div class="media-body search-result-item">
                 <h4 class="media-heading">
-                    <a href="/${course.id }">${course.id}) ${course.name }</a>
+                    <a href="/course/${course.id }">${course.id}) ${course.name }</a>
                 </h4>
                 <p>Name: ${course.name}</p>
                 <p>School: ${course.school}</p>

@@ -44,6 +44,16 @@ public class PublicDataController {
 		return "profile";
 	}
 
+	@RequestMapping(value="course/{id}", method=RequestMethod.GET)
+	public String getCourse(@PathVariable("id") String id, Model model){
+		Course course = findCourseService.findById(id);
+		if(course == null) {
+			return "course_not_found";
+		}
+		model.addAttribute("course", course);
+		return "course";
+	}
+
 	@RequestMapping(value="/error", method=RequestMethod.GET)
 	public String getError(){
 		return "error";

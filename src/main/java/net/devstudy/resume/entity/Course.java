@@ -68,14 +68,6 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
 		this.school = school;
 	}
 
-//	public Profile getProfile() {
-//		return profile;
-//	}
-//
-//	public void setProfile(Profile profile) {
-//		this.profile = profile;
-//	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
