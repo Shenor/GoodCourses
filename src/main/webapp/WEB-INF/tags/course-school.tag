@@ -6,7 +6,9 @@
 			<table class="table table-bordered">
 				<tbody>
 				<tr>
-					<td>${course.name}</td>
+					<td>School</td>
+				</tr>
+				<tr>
 					<td>${course.school}</td>
 				</tr>
 				</tbody>
