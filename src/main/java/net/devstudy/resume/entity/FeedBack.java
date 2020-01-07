@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "feedback")
@@ -11,8 +12,8 @@ public class FeedBack extends AbstractEntity<Long> implements Serializable, Prof
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name="REWIEW_ID_GENERATOR", sequenceName="REWIEW_SEQ", allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REWIEW_ID_GENERATOR")
+    @SequenceGenerator(name="FEEDBACK_ID_GENERATOR", sequenceName="FEEDBACK_SEQ", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FEEDBACK_ID_GENERATOR")
     @Column(unique=true, nullable=false)
     private Long id;
 
@@ -30,10 +31,10 @@ public class FeedBack extends AbstractEntity<Long> implements Serializable, Prof
     private String description;
 
     @Column(name="start_date", nullable=false)
-    private Integer startDate;
+    private Timestamp startDate;
 
     @Column(name="last_update")
-    private Integer lastUpdate;
+    private Timestamp lastUpdate;
 
     @Override
     public Long getId() {
@@ -55,5 +56,29 @@ public class FeedBack extends AbstractEntity<Long> implements Serializable, Prof
 
     public Course getCourse() {
         return course;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

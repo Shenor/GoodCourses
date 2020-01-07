@@ -312,7 +312,7 @@ public class TestDataGenerator {
 		ps.setLong(2, 1);
 		ps.setString(3,"Good course");
 		ps.setInt(4,4);
-		ps.setDate(5, new Date(System.currentTimeMillis()));
+		ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 		ps.executeUpdate();
 		ps.close();
 	}

@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+--COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 SET default_tablespace = '';
@@ -145,8 +145,8 @@ CREATE TABLE public.feedback (
     profile_id bigint NOT NULL,
     description text,
     rating integer,
-    start_date date,
-    last_update date
+    start_date timestamp,
+    last_update timestamp
 );
 
 
