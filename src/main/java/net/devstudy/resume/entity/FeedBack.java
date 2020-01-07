@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "rewiew")
-public class Rewiew extends AbstractEntity<Long> implements Serializable, ProfileEntity {
+@Table(name = "feedback")
+public class FeedBack extends AbstractEntity<Long> implements Serializable, ProfileEntity {
     private static final long serialVersionUID = 1L;
 
     @Id

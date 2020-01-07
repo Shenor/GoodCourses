@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
---COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 SET default_tablespace = '';
@@ -134,6 +134,37 @@ CACHE 1;
 
 
 ALTER TABLE public.education_seq OWNER TO resume;
+
+--
+-- Name: feedback; Type: TABLE; Schema: public; Owner: resume
+--
+
+CREATE TABLE public.feedback (
+    id bigint NOT NULL,
+    course_id bigint NOT NULL,
+    profile_id bigint NOT NULL,
+    description text,
+    rating integer,
+    start_date date,
+    last_update date
+);
+
+
+ALTER TABLE public.feedback OWNER TO resume;
+
+--
+-- Name: feedback_seq; Type: SEQUENCE; Schema: public; Owner: resume
+--
+
+CREATE SEQUENCE public.feedback_seq
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
+
+
+ALTER TABLE public.feedback_seq OWNER TO resume;
 
 --
 -- Name: hobby; Type: TABLE; Schema: public; Owner: resume
@@ -391,6 +422,21 @@ SELECT pg_catalog.setval('public.education_seq', 1, false);
 
 
 --
+-- Data for Name: feedback; Type: TABLE DATA; Schema: public; Owner: resume
+--
+
+COPY public.feedback (id, course_id, profile_id, description, rating, start_date, last_update) FROM stdin;
+\.
+
+
+--
+-- Name: feedback_seq; Type: SEQUENCE SET; Schema: public; Owner: resume
+--
+
+SELECT pg_catalog.setval('public.feedback_seq', 1, false);
+
+
+--
 -- Data for Name: hobby; Type: TABLE DATA; Schema: public; Owner: resume
 --
 
@@ -487,46 +533,6 @@ COPY public.skill_category (id, category) FROM stdin;
 --
 
 SELECT pg_catalog.setval('public.skill_seq', 1, false);
-
-
---
--- Name: course course_pkey; Type: CONSTRAINT; Schema: public; Owner: resume
---
-
-ALTER TABLE ONLY public.course
-ADD CONSTRAINT course_pkey PRIMARY KEY (id);
-
-
---
--- Name: course_profile course_profile_pkey; Type: CONSTRAINT; Schema: public; Owner: resume
---
-
-ALTER TABLE ONLY public.course_profile
-ADD CONSTRAINT course_profile_pkey PRIMARY KEY (course_id, profile_id);
-
-
---
--- Name: profile profile_pkey; Type: CONSTRAINT; Schema: public; Owner: resume
---
-
-ALTER TABLE ONLY public.profile
-ADD CONSTRAINT profile_pkey PRIMARY KEY (id);
-
-
---
--- Name: course_profile course_profile_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: resume
---
-
-ALTER TABLE ONLY public.course_profile
-ADD CONSTRAINT course_profile_course_id_fkey FOREIGN KEY (course_id) REFERENCES public.course(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: course_profile course_profile_profile_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: resume
---
-
-ALTER TABLE ONLY public.course_profile
-ADD CONSTRAINT course_profile_profile_id_fkey FOREIGN KEY (profile_id) REFERENCES public.profile(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
