@@ -182,6 +182,7 @@ public class TestDataGenerator {
 		insertPractics(c, profileConfig);
 		insertSkills(c, profileConfig);
 		insertCourses(c);
+		insertFeedBack(c);
 	}
 
 	private static void insertSkills(Connection c, ProfileConfig profileConfig) throws SQLException {
@@ -300,6 +301,18 @@ public class TestDataGenerator {
 		}
 		ps.setString(5, "Kharkiv National Technical University, Ukraine");
 		ps.setString(6, "Computer Science");
+		ps.executeUpdate();
+		ps.close();
+	}
+
+	private static void insertFeedBack(Connection c) throws SQLException{
+//		insert into feedback(id,course_id,profile_id,description,rating,start_date)
+		PreparedStatement ps = c.prepareStatement("insert into feedback values (nextval('feedback_seq'),?,?,?,?,?)");
+		ps.setLong(1, idProfile);
+		ps.setLong(2, 1);
+		ps.setString(3,"Good course");
+		ps.setInt(4,4);
+		ps.setDate(5, new Date(System.currentTimeMillis()));
 		ps.executeUpdate();
 		ps.close();
 	}
