@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/my-profile", "/edit", "/edit/**", "/remove").hasAuthority(Constants.USER)
+			.antMatchers("/my-profile","/add","/add/**", "/edit", "/edit/**", "/remove").hasAuthority(Constants.USER)
 			.anyRequest().permitAll(); 
 		http.formLogin()
 			.loginPage("/sign-in")
