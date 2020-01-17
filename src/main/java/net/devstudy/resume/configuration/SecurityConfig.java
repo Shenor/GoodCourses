@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/my-profile","/add","/add/**", "/edit", "/edit/**", "/remove").hasAuthority(Constants.USER)
+			.antMatchers("/my-profile","/profiles","/add","/add/**", "/edit", "/edit/**", "/remove").hasAuthority(Constants.USER)
 			.anyRequest().permitAll(); 
 		http.formLogin()
 			.loginPage("/sign-in")
@@ -62,7 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.logout()
 			.logoutUrl("/sign-out")
 			.logoutSuccessUrl("/welcome-courses")
-			.logoutSuccessUrl("/welcome-profiles")
 			.invalidateHttpSession(true)
 			.deleteCookies("JSESSIONID");
 		http.rememberMe()

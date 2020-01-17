@@ -63,15 +63,8 @@ public class PublicDataController {
 		return "error";
 	}
 
-	@RequestMapping(value = { "/welcome-profiles" })
-	public String listAll(Model model) {
-		Page<Profile> profiles = findProfileService.findAll(new PageRequest(0, Constants.MAX_PROFILES_PER_PAGE, new Sort("id")));
-		model.addAttribute("profiles", profiles.getContent());
-		model.addAttribute("page", profiles);
-		return "profiles";
-	}
 
-	@RequestMapping(value = { "/welcome-courses" })
+	@RequestMapping(value = { "/courses" })
 	public String courseAll(Model model) {
 		Page<Course> courses = findCourseService.findAll(new PageRequest(0, Constants.MAX_PROFILES_PER_PAGE, new Sort("id")));
  		model.addAttribute("courses", courses.getContent());
