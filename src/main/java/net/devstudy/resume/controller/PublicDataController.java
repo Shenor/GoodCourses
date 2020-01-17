@@ -1,10 +1,12 @@
 package net.devstudy.resume.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import net.devstudy.resume.entity.Course;
+import net.devstudy.resume.entity.FeedBack;
 import net.devstudy.resume.service.FindCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -50,6 +52,8 @@ public class PublicDataController {
 		if(course == null) {
 			return "course_not_found";
 		}
+		List<FeedBack> feedBacks = course.getFeedbacks();
+		model.addAttribute("feedbacks", feedBacks);
 		model.addAttribute("course", course);
 		return "course";
 	}

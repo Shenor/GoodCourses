@@ -2,14 +2,10 @@ package net.devstudy.resume.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -39,6 +35,9 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "profile_id"))
 	private List<Profile> profiles = new ArrayList<>();
+
+	@OneToMany(mappedBy = "course", cascade={CascadeType.ALL, CascadeType.PERSIST})
+	private List<FeedBack> feedbacks;
 
     public List<Profile> getProfiles() {
         return profiles;
@@ -109,5 +108,15 @@ public class Course extends AbstractFinishDateEntity<Long> implements Serializab
 		} else if (!school.equals(other.school))
 			return false;
 		return true;
+	}
+
+	public List<FeedBack> getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void setFeedbacks(List<FeedBack> feedbacks) {
+		this.feedbacks = feedbacks;
+		//TODO возможно нужен будет метод для обновления отзывов
+		//updateListSetFeedBacks(this.feedbacks);
 	}
 }
