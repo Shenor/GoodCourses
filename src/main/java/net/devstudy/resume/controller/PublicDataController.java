@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import net.devstudy.resume.entity.Course;
 import net.devstudy.resume.entity.FeedBack;
+import net.devstudy.resume.repository.storage.ProfileRepository;
 import net.devstudy.resume.service.FindCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -69,6 +70,9 @@ public class PublicDataController {
 		Page<Course> courses = findCourseService.findAll(new PageRequest(0, Constants.MAX_PROFILES_PER_PAGE, new Sort("id")));
  		model.addAttribute("courses", courses.getContent());
 		model.addAttribute("page", courses);
+		if (SecurityUtil.getCurrentIdProfile() != null) {
+			model.addAttribute("auth", true);
+		}
 		return "courses";
 	}
 

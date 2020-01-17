@@ -96,6 +96,9 @@
     margin: 0;
 }
 
+.resume #signIn {
+    margin-bottom: 15px;
+}
 .resume #loadMoreContainer {
     margin-bottom: 15px;
 }
