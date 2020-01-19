@@ -4,6 +4,8 @@ import net.devstudy.resume.entity.Course;
 import net.devstudy.resume.entity.Profile;
 import net.devstudy.resume.repository.storage.CourseRepository;
 import net.devstudy.resume.repository.storage.ProfileRepository;
+import net.devstudy.resume.service.AddProfileService;
+import net.devstudy.resume.service.FindProfileService;
 import net.devstudy.resume.service.impl.AddFeedBackServiceImpl;
 import net.devstudy.resume.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,12 @@ public class AddDataController {
     private CourseRepository courseRepository;
 
     @Autowired
+    private FindProfileService findProfileService;
+
+    @Autowired
+    private AddProfileService addProfileService;
+
+    @Autowired
     private ProfileRepository profileRepository;
 
     @RequestMapping(value = "/add/feedback", method= RequestMethod.POST)
@@ -33,5 +41,20 @@ public class AddDataController {
         Profile profile = profileRepository.findOne(uid);
         addFeedBackService.createNewFeedBack(course, profile, feedback);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+    public String signUp(@RequestParam(value = "first_name") String firstName,
+                         @RequestParam(value = "last_name") String lastName,
+                         @RequestParam(value = "uid") String uid,
+                         @RequestParam(value = "password") String password) {
+        if (findProfileService.findByUid(uid) == null) {
+            Profile profile = addProfileService.createNewProfile(firstName, lastName, uid, password);
+            SecurityUtil.authentificate(profile);
+            return "redirect:/" + profile.getUid();
+        } else {
+            return "sign-up";
+        }
     }
 }

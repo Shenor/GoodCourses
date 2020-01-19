@@ -32,6 +32,9 @@
 			</div>
 			<div class="form-group" style="display:table;width:100%;">
 				<button type="submit" class="btn btn-primary pull-left">Войти</button>
+				<a href="/sign-up" class="pull-right">Зарегистрироваться</a>
+				<br/>
+				<br/>
 				<a href="#" class="pull-right">Восстановить доступ</a>
 			</div>
 			<div class="form-group text-center">

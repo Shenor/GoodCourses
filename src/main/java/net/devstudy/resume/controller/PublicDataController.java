@@ -18,9 +18,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import net.devstudy.resume.Constants;
 import net.devstudy.resume.entity.Profile;
@@ -101,5 +99,24 @@ public class PublicDataController {
 			return "redirect:/sign-in";
 		}
 		return "sign-in";
+	}
+
+	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
+	public String signUp() {
+		CurrentProfile currentProfile = SecurityUtil.getCurrentProfile();
+		if(currentProfile != null) {
+			return "redirect:/" + currentProfile.getUsername();
+		}
+		else{
+			return "sign-up";
+		}
+	}
+
+	@RequestMapping(value = "/sign-up-failed")
+	public String signUpFailed(HttpSession session) {
+		if (session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION") == null) {
+			return "redirect:/sign-up";
+		}
+		return "sign-up";
 	}
 }
