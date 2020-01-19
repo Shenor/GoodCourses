@@ -79,7 +79,6 @@ public class EditProfileServiceImpl implements EditProfileService {
 			public void afterCommit() {
 				LOGGER.info("New profile created: {}", profile.getUid());
 				profile.setCertificates(Collections.EMPTY_LIST);
-				profile.setPractics(Collections.EMPTY_LIST);
 				profile.setLanguages(Collections.EMPTY_LIST);
 				profile.setSkills(Collections.EMPTY_LIST);
 				profileSearchRepository.save(profile);

@@ -17,7 +17,7 @@ public interface ProfileSearchRepository extends ElasticsearchRepository<Profile
 	 * 
 	 * http://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#elasticsearch.query-methods.criterions
 	 */
-	Page<Profile> findByObjectiveLikeOrSummaryLikeOrPracticsCompanyLikeOrPracticsPositionLike(
-			String objective, String summary, String practicCompany, String practicPosition, Pageable pageable);
+//	Page<Profile> findByObjectiveLikeOrSummaryLikeOrPracticsCompanyLikeOrPracticsPositionLike(
+//			String objective, String summary, String practicCompany, String practicPosition, Pageable pageable);
 	
 }

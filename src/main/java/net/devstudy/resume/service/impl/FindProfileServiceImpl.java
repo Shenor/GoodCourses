@@ -45,17 +45,16 @@ public class FindProfileServiceImpl implements FindProfileService, UserDetailsSe
 			p.getSkills().size();
 			p.getCertificates().size();
 			p.getLanguages().size();
-			p.getPractics().size();
-//			p.getCourses().size();
+			p.getCourses().size();
 		}
 		return all;
 	}
 
-	@Override
-	public Page<Profile> findBySearchQuery(String query, Pageable pageable) {
-		return profileSearchRepository.findByObjectiveLikeOrSummaryLikeOrPracticsCompanyLikeOrPracticsPositionLike(
-				query, query, query, query, pageable);
-	}
+//	@Override
+//	public Page<Profile> findBySearchQuery(String query, Pageable pageable) {
+//		return profileSearchRepository.findByObjectiveLikeOrSummaryLikeOrPracticsCompanyLikeOrPracticsPositionLike(
+//				query, query, query, query, pageable);
+//	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
