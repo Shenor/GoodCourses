@@ -6,7 +6,6 @@
 		<div class="col-md-4 col-sm-6">
 			<resume:profile-main />
 			<div class="hidden-xs">
-				<resume:profile-languages />
 				<resume:profile-info />
 			</div>
 		</div>
@@ -18,7 +17,6 @@
 			<resume:profile-education />
 		</div>
 		<div class="col-xs-12 visible-xs-block">
-			<resume:profile-languages />
 			<resume:profile-info />
 		</div>
 	</div>
