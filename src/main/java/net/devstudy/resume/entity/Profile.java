@@ -96,11 +96,6 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	private List<Education> educations;
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@OrderBy("name ASC")
-	@JsonIgnore
-	private List<Hobby> hobbies;
-
-	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	private List<Language> languages;
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
@@ -213,15 +208,6 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	public void setEducations(List<Education> educations) {
 		this.educations = educations;
 		updateListSetProfile(this.educations);
-	}
-
-	public List<Hobby> getHobbies() {
-		return this.hobbies;
-	}
-
-	public void setHobbies(List<Hobby> hobbies) {
-		this.hobbies = hobbies;
-		updateListSetProfile(this.hobbies);
 	}
 
 	public List<Language> getLanguages() {

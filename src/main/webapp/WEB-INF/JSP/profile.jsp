@@ -7,7 +7,6 @@
 			<resume:profile-main />
 			<div class="hidden-xs">
 				<resume:profile-languages />
-				<resume:profile-hobbies />
 				<resume:profile-info />
 			</div>
 		</div>
@@ -20,7 +19,6 @@
 		</div>
 		<div class="col-xs-12 visible-xs-block">
 			<resume:profile-languages />
-			<resume:profile-hobbies />
 			<resume:profile-info />
 		</div>
 	</div>
