@@ -3,10 +3,7 @@
 <%@ taglib prefix="course" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="resume" tagdir="/WEB-INF/tags"%>
 
-<div class="row certificates">
-    <div class="row">
-        <course:check-auth />
-    </div>
+<div class="row courses">
     <div id="profileContainer" class="col-xs-12" data-profile-total="${page.totalPages }" data-profile-number="${page.number }">
         <jsp:include page="fragment/courses-items.jsp" />
     </div>
