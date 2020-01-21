@@ -15,3 +15,16 @@
         </div>
     </c:if>
 </c:if>
+
+<c:if test= "${isUSer}">
+    <c:choose>
+        <c:when test="${profile != null}">
+            <%--Заглушка для страницы профиля--%>
+        </c:when>
+        <c:otherwise>
+            <div id="myProfile" class="col-xs-16 text-right">
+                <a href="/my-profile" class="btn btn-primary">Мой профиль</a>
+            </div>
+        </c:otherwise>
+    </c:choose>
+</c:if>
