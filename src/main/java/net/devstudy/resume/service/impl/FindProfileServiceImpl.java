@@ -28,6 +28,11 @@ public class FindProfileServiceImpl implements FindProfileService, UserDetailsSe
 	private ProfileSearchRepository profileSearchRepository;
 
 	@Override
+	public Profile findById(long id) {
+		return profileRepository.findById(id);
+	}
+
+	@Override
 	public Profile findByUid(String uid) {
 		return profileRepository.findByUid(uid);
 	}

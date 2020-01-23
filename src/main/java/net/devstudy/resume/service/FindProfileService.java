@@ -12,6 +12,8 @@ import net.devstudy.resume.entity.Profile;
  */
 public interface FindProfileService {
 
+	Profile findById(long id);
+
 	Profile findByUid(String uid);
 
 	Page<Profile> findAll(Pageable pageable);

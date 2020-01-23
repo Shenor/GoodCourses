@@ -17,7 +17,7 @@ public class FeedBack extends AbstractEntity<Long> implements Serializable, Prof
     @Column(unique=true, nullable=false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id", nullable = false)
     @JsonIgnore
     private Profile profile;

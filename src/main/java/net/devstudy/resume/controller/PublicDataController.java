@@ -53,6 +53,23 @@ public class PublicDataController {
 		}
 		List<FeedBack> feedBacks = course.getFeedbacks();
 		model.addAttribute("feedbacks", feedBacks);
+		//TODO настройка отображения формы для добавления отзыва
+        //TODO в зависимости от того добавлял пользователь ранне отзыв к данному курсу или нет
+        if (SecurityUtil.getCurrentIdProfile() != null) {
+            long idProfile = SecurityUtil.getCurrentIdProfile();
+            Profile profile = findProfileService.findById(idProfile);
+            boolean editFeedback = false;
+            for (FeedBack feedBack : feedBacks) {
+                if (feedBack.getProfile().equals(profile)) {
+                    editFeedback = true;
+                    model.addAttribute("editFeedback", editFeedback);
+                    break;
+                }
+            }
+            if (!editFeedback) {
+                model.addAttribute("editFeedback", editFeedback);
+            }
+        }
 		model.addAttribute("course", course);
 		return "course";
 	}

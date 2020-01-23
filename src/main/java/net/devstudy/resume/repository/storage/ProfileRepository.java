@@ -16,6 +16,8 @@ import net.devstudy.resume.entity.Profile;
  */
 public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long> {
 
+	Profile findById(long id);
+
 	Profile findByUid(String uid);
 	
 	Profile findByEmail(String email);
