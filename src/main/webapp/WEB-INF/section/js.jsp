@@ -2,4 +2,5 @@
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.bundle.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
