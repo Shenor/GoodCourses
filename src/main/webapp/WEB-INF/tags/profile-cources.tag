@@ -2,14 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			<i class="fa fa-book"></i> Courses <a class="edit-block" href="/edit/courses">Edit</a>
-		</h3>
+<div class="card">
+	<div class="card-header">
+		<i class="fa fa-book"></i> Courses <a class="edit-block" href="/edit/courses">Edit</a>
 	</div>
 	<c:if test="${fn:length(profile.courses) > 0}">
-		<div class="panel-body">
+		<div class="card-body">
 			<c:forEach var="course" items="${profile.courses}">
 			<div class="timeline-heading">
 				<h4 class="timeline-title">${course.name}</h4>

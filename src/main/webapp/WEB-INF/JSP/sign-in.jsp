@@ -3,13 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="resume" tagdir="/WEB-INF/tags"%>
 
-<div class="panel panel-info small-center-block">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			<i class="fa fa-sign-in"></i> Вход в Ваш личный кабинет
-		</h3>
+<div class="card small-center-block">
+	<div class="card-header">
+		<i class="fa fa-sign-in"></i> Вход в Ваш личный кабинет
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
 		<form action="/sign-in-handler" method="post">
 			<c:if test="${sessionScope.SPRING_SECURITY_LAST_EXCEPTION != null}">
 				<div class="alert alert-danger" role="alert">

@@ -1,8 +1,10 @@
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 
-<div class="panel panel-primary">
-	<div class="panel-body">
-		<div class="school">
+<div class="card">
+	<div class="card-header">
+		Школа
+	</div>
+	<div class="card-body">
 			<table class="table table-bordered">
 				<tbody>
 				<tr>
