@@ -5,15 +5,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6">
-            <div class="hidden-xs">
-                <course:course-school />
-            </div>
+            <course:course-school />
         </div>
     </div>
     <div class="row">
-        <course:feedbacks-view />
+        <div class="col-md-4 col-sm-6">
+            <course:feedbacks-view />
+        </div>
     </div>
     <div class="row">
-        <course:feedback-you />
+        <div class="col-md-4 col-sm-6">
+            <course:feedback-you />
+        </div>
     </div>
 </div>
