@@ -10,9 +10,9 @@
     <!--TODO попробовать реализовать исключения для отображения кнопки для адресов sign-in и sign-up средствами spring-security-->
     <c:if test = "${!fn:contains(requestScope['javax.servlet.forward.request_uri'], 'sign-in') &&
     !fn:contains(requestScope['javax.servlet.forward.request_uri'], 'sign-up')}">
-        <div id="signIn" class="col-xs-12 text-right">
-            <a href="/sign-in" class="btn btn-primary">Авторизоваться</a>
-        </div>
+        <li class="nav-item">
+            <a href="/sign-in" class="nav-link">Авторизоваться</a>
+        </li>
     </c:if>
 </c:if>
 
@@ -22,9 +22,9 @@
             <%--Заглушка для страницы профиля--%>
         </c:when>
         <c:otherwise>
-            <div id="myProfile" class="col-xs-16 text-right">
-                <a href="/my-profile" class="btn btn-primary">Мой профиль</a>
-            </div>
+            <li class="nav-item">
+                <a href="/my-profile" class="nav-link">Мой профиль</a>
+            </li>
         </c:otherwise>
     </c:choose>
 </c:if>
