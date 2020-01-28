@@ -1,12 +1,14 @@
 sudo apt-get update
-sudo apt-get install openjdk-7-jre
+sudo apt-get install openjdk-8-jre
 java -version
-sudo apt-get install tomcat7
+sudo apt-get install tomcat8
 # Please visit: ${HOST}:8080 to verify that tomcat successful installed
 sudo apt-get install nginx
 # Please visit: ${HOST}:80 to verify that nginx successful installed
 
 sudo apt-get -y install python-software-properties
+#If error :Package 'python-software-properties' has no installation candidate
+#Then run: sudo apt --fix-broken install python-pycurl python-apt
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
 sudo apt-get update
