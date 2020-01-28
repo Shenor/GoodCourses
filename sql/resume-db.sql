@@ -145,8 +145,8 @@ CREATE TABLE public.feedback (
     profile_id bigint NOT NULL,
     description text,
     rating integer,
-    start_date timestamp,
-    last_update timestamp
+    start_date timestamp without time zone,
+    last_update timestamp without time zone
 );
 
 
@@ -194,21 +194,6 @@ CACHE 1;
 ALTER TABLE public.hobby_seq OWNER TO resume;
 
 --
--- Name: language; Type: TABLE; Schema: public; Owner: resume
---
-
-CREATE TABLE public.language (
-    id bigint NOT NULL,
-    id_profile bigint NOT NULL,
-    name character varying(30) NOT NULL,
-    level character varying(18) NOT NULL,
-    type character varying(7) DEFAULT 0 NOT NULL
-);
-
-
-ALTER TABLE public.language OWNER TO resume;
-
---
 -- Name: language_seq; Type: SEQUENCE; Schema: public; Owner: resume
 --
 
@@ -235,25 +220,6 @@ CREATE TABLE public.persistent_logins (
 
 
 ALTER TABLE public.persistent_logins OWNER TO resume;
-
---
--- Name: practic; Type: TABLE; Schema: public; Owner: resume
---
-
-CREATE TABLE public.practic (
-    id bigint NOT NULL,
-    id_profile bigint NOT NULL,
-    "position" character varying(100) NOT NULL,
-    company character varying(100) NOT NULL,
-    begin_date date NOT NULL,
-    finish_date date,
-    responsibilities text NOT NULL,
-    demo character varying(255),
-    src character varying(255)
-);
-
-
-ALTER TABLE public.practic OWNER TO resume;
 
 --
 -- Name: practic_seq; Type: SEQUENCE; Schema: public; Owner: resume
@@ -452,14 +418,6 @@ SELECT pg_catalog.setval('public.hobby_seq', 1, false);
 
 
 --
--- Data for Name: language; Type: TABLE DATA; Schema: public; Owner: resume
---
-
-COPY public.language (id, id_profile, name, level, type) FROM stdin;
-\.
-
-
---
 -- Name: language_seq; Type: SEQUENCE SET; Schema: public; Owner: resume
 --
 
@@ -471,14 +429,6 @@ SELECT pg_catalog.setval('public.language_seq', 1, false);
 --
 
 COPY public.persistent_logins (username, series, token, last_used) FROM stdin;
-\.
-
-
---
--- Data for Name: practic; Type: TABLE DATA; Schema: public; Owner: resume
---
-
-COPY public.practic (id, id_profile, "position", company, begin_date, finish_date, responsibilities, demo, src) FROM stdin;
 \.
 
 

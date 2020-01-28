@@ -54,8 +54,9 @@ public class TestDataGenerator {
 	private static final String MEDIA_DIR = "D:/devstudy.net/workspace/resume/src/main/webapp/media";
 	private static final String COUTRY = "Ukraine";
 	private static final String[] CITIES = { "Kharkiv", "Kiyv", "Odessa" };
-	private static final String[] FOREGIN_LANGUAGES = { "Spanish", "French", "German", "Italian" };
 	private static final String PASSWORD_HASH = "$2a$10$q7732w6Rj3kZGhfDYSIXI.wFp.uwTSi2inB2rYHvm1iDIAf1J1eVq";
+
+	private static final String[] PLATFORMS = { "job4j", "javaRush", "udemy", "coursera.org", "sso.openedu.ru"};
 
 	private static final String[] HOBBIES = { "Cycling", "Handball", "Football", "Basketball", "Bowling", "Boxing", "Volleyball", "Baseball", "Skating", "Skiing", "Table tennis", "Tennis",
 			"Weightlifting", "Automobiles", "Book reading", "Cricket", "Photo", "Shopping", "Cooking", "Codding", "Animals", "Traveling", "Movie", "Painting", "Darts", "Fishing", "Kayak slalom",
@@ -174,7 +175,6 @@ public class TestDataGenerator {
 		}
 		insertEducation(c);
 		insertHobbies(c);
-		insertPractics(c, profileConfig);
 		insertSkills(c, profileConfig);
 		insertCourses(c);
 		insertFeedBack(c);
@@ -195,39 +195,6 @@ public class TestDataGenerator {
 				ps.setString(3, StringUtils.join(entry.getValue().toArray(), ", "));
 				ps.addBatch();
 			}
-		}
-		ps.executeBatch();
-		ps.close();
-	}
-
-	private static void insertPractics(Connection c, ProfileConfig profileConfig) throws SQLException {
-		PreparedStatement ps = c.prepareStatement("insert into practic values (nextval('practic_seq'),?,?,?,?,?,?,?,?)");
-		boolean currentCourse = r.nextBoolean();
-		Date finish = addField(new Date(System.currentTimeMillis()), Calendar.MONTH, -(r.nextInt(3) + 1), false);
-		for (Course course : profileConfig.courses) {
-			ps.setLong(1, idProfile);
-			ps.setString(2, course.name);
-			ps.setString(3, course.company);
-			if (currentCourse) {
-				ps.setDate(4, addField(new Date(System.currentTimeMillis()), Calendar.MONTH, -1, false));
-				ps.setNull(5, Types.DATE);
-			} else {
-				ps.setDate(4, addField(finish, Calendar.MONTH, -1, false));
-				ps.setDate(5, finish);
-				finish = addField(finish, Calendar.MONTH, -(r.nextInt(3) + 1), false);
-			}
-			ps.setString(6, course.responsibilities);
-			if (course.demo == null) {
-				ps.setNull(7, Types.VARCHAR);
-			} else {
-				ps.setString(7, course.demo);
-			}
-			if (course.github == null) {
-				ps.setNull(8, Types.VARCHAR);
-			} else {
-				ps.setString(8, course.github);
-			}
-			ps.addBatch();
 		}
 		ps.executeBatch();
 		ps.close();
@@ -300,9 +267,12 @@ public class TestDataGenerator {
 	private static void insertCourses(Connection c) throws SQLException {
 		if (r.nextBoolean()) {
 			PreparedStatement ps = c.prepareStatement("insert into course values (nextval('course_seq'),?,?,?)");
-//			ps.setLong(1, idProfile);
-			ps.setString(1, "Java Advanced Course");
-			ps.setString(2, "SourceIt");
+			List<String> platforms = new ArrayList<>(Arrays.asList(PLATFORMS));
+			Collections.shuffle(platforms);
+			//			ps.setLong(1, idProfile);
+			ps.setString(1, "Java");
+			//TODO переделать обработку массива с списком платформ
+			ps.setString(2, platforms.remove(0));
 			Date finish = randomFinishEducation();
 			if (finish.getTime() > System.currentTimeMillis()) {
 				ps.setNull(3, Types.DATE);
