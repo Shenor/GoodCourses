@@ -45,8 +45,8 @@ pg_dump --host=localhost --username=db-user --password= db_name > dump.sql
 7z e dump.7z
 psql -h localhost -d db_name db_name < dump.sql
 
-sudo chmod -R 777 /var/lib/tomcat7/webapps
-sudo chmod -R 777 /var/log/tomcat7
+sudo chmod -R 777 /var/lib/tomcat8/webapps
+sudo chmod -R 777 /var/log/tomcat8
 
 sudo rm /etc/nginx/nginx.conf
 sudo mv /home/ubuntu/nginx.conf /etc/nginx/nginx.conf
@@ -65,6 +65,6 @@ sudo mkdir /var/resume/logs
 sudo chmod -R 777 /var/resume/logs
 sudo mkdir /var/resume/web
 sudo chmod -R 777 /var/resume/web
-sudo ln -s /var/lib/tomcat7/webapps/ROOT/static /var/resume/web
+sudo ln -s /var/lib/tomcat8/webapps/ROOT/static /var/resume/web
 sudo mkdir /var/resume/web/media
 sudo chmod -R 777 /var/resume/web/media
