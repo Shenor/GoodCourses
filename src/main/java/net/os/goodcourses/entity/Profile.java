@@ -16,8 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 @Entity
 @Table(name = "profile")

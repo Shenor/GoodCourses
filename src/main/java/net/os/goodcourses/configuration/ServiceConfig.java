@@ -11,8 +11,6 @@ import org.springframework.core.io.Resource;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 @Configuration
 @ComponentScan({ "net.os.goodcourses.service.impl",

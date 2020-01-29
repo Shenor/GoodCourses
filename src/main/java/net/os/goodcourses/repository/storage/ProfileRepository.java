@@ -10,9 +10,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import net.os.goodcourses.entity.Profile;
 
 /**
- *  
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long> {
 

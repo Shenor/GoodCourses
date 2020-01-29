@@ -17,9 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import net.os.goodcourses.entity.Profile;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)

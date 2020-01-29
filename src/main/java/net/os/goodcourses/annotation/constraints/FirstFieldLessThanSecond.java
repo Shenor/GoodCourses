@@ -13,9 +13,7 @@ import javax.validation.Payload;
 
 /**
  * 
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)

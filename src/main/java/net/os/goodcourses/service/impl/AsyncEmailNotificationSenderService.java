@@ -46,9 +46,7 @@ public class AsyncEmailNotificationSenderService implements NotificationSenderSe
 	}
 	
 	/**
-	 * 
-	 * @author devstudy
-	 * @see http://devstudy.net
+	 *
 	 */
 	private class EmailItem implements Runnable {
 		private final NotificationMessage notificationMessage;

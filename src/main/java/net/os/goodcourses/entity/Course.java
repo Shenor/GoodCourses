@@ -9,8 +9,6 @@ import javax.persistence.*;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 @Entity
 @Table(name = "course")

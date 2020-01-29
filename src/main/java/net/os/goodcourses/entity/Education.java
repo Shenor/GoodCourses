@@ -15,9 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Entity
 @Table(name="education")

@@ -7,8 +7,6 @@ import net.os.goodcourses.entity.Profile;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 public interface FindProfileService {
 

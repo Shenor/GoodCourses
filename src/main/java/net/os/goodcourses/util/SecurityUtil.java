@@ -11,8 +11,6 @@ import net.os.goodcourses.model.CurrentProfile;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 public final class SecurityUtil {
 

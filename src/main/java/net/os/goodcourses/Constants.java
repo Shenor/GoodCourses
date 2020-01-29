@@ -2,8 +2,6 @@ package net.os.goodcourses;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 public final class Constants {
 

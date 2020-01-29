@@ -8,9 +8,7 @@ import net.os.goodcourses.entity.SkillCategory;
 import net.os.goodcourses.form.SignUpForm;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public interface EditProfileService {
 

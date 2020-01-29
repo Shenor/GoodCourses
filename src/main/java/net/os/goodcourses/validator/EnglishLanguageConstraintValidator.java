@@ -6,9 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import net.os.goodcourses.annotation.constraints.EnglishLanguage;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public class EnglishLanguageConstraintValidator implements ConstraintValidator<EnglishLanguage, String>{
 	

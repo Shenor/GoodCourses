@@ -14,9 +14,7 @@ import net.os.goodcourses.entity.Profile;
 import net.os.goodcourses.service.FindProfileService;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Service
 public class ElasticSearchIndexingService {

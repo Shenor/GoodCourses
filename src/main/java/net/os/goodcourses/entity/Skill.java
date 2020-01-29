@@ -20,8 +20,6 @@ import net.os.goodcourses.annotation.constraints.EnglishLanguage;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 @Entity
 @Table(name="skill")

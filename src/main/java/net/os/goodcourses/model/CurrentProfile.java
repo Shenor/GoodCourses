@@ -9,9 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import net.os.goodcourses.Constants;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public class CurrentProfile extends User {
 	private static final long serialVersionUID = 3850489832510630519L;

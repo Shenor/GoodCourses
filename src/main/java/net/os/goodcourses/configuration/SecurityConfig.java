@@ -17,9 +17,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import net.os.goodcourses.Constants;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

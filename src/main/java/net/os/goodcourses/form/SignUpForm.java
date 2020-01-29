@@ -10,9 +10,7 @@ import net.os.goodcourses.annotation.constraints.FieldMatch;
 import net.os.goodcourses.annotation.constraints.PasswordStrength;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match")
 public class SignUpForm implements Serializable {

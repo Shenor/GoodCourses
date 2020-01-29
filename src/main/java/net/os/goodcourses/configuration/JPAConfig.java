@@ -20,8 +20,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 @Configuration
 @PropertySource("classpath:application.properties")

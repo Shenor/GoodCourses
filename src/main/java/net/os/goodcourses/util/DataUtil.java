@@ -6,9 +6,7 @@ import net.os.goodcourses.form.SignUpForm;
 import org.apache.commons.lang.WordUtils;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public class DataUtil {
 

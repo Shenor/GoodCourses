@@ -15,9 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public abstract class AbstractFilter implements Filter {
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());

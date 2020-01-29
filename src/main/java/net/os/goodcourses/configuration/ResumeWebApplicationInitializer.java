@@ -25,8 +25,6 @@ import net.os.goodcourses.filter.ResumeFilter;
 
 /**
  *
- * @author devstudy
- * @see http://devstudy.net
  */
 public class ResumeWebApplicationInitializer implements WebApplicationInitializer {
 

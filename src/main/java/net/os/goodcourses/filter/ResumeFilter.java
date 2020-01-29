@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Component
 public class ResumeFilter extends AbstractFilter {

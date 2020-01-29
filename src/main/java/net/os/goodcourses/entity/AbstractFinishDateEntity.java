@@ -9,9 +9,7 @@ import javax.persistence.Transient;
 import org.joda.time.DateTime;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @MappedSuperclass
 public abstract class AbstractFinishDateEntity<T> extends AbstractEntity<T> {

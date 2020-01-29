@@ -17,9 +17,7 @@ import javax.validation.Payload;
 import net.os.goodcourses.validator.EnglishLanguageConstraintValidator;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)

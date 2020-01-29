@@ -5,9 +5,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import net.os.goodcourses.entity.Profile;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 public interface ProfileSearchRepository extends ElasticsearchRepository<Profile, Long> {
 

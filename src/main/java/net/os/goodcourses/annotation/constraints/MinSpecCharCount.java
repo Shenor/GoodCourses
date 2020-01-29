@@ -15,9 +15,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)

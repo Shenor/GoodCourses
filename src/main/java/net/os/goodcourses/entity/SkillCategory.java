@@ -6,9 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 
- * @author devstudy
- * @see http://devstudy.net
+ *
  */
 @Entity
 @Table(name="skill_category")
