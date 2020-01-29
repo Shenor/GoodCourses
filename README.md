@@ -1,3 +1,3 @@
-# resume
+# GoodCourses
 
 ![Scheme](img/scheme.png)

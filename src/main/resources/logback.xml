@@ -10,9 +10,9 @@
 
 	<!--logger name="org.hibernate.SQL" level="debug" /> <logger name="org.hibernate.type" level="trace" /-->
 
-	<!--logger name="net.devstudy.resume.service.impl" level="debug" />
+	<!--logger name="net.os.goodcourses.service.impl" level="debug" />
 
-	<logger name="net.devstudy.resume.controller" level="debug" /-->
+	<logger name="net.os.goodcourses.controller" level="debug" /-->
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
