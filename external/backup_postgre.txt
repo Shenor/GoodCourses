@@ -1,0 +1,5 @@
+# Создание резервной копии с данными
+pg_dump.exe --host localhost --port 5432 --username "resume" --role "resume" --password --format custom --blobs --section pre-data --section data --section post-data --encoding UTF8 --verbose --file "C:\resume.backup" "resume"
+
+# Восстановление резервной копии с данными
+pg_restore.exe --host localhost --port 5432 --username "resume" --dbname "resume" --role "resume" --password  --section pre-data --section data --section post-data --verbose "C:\resume.backup"
