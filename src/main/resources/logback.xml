@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <configuration>
 	<!-- http://logback.qos.ch/manual/appenders.html -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -8,11 +7,11 @@
 		</layout>
 	</appender>
 
-	<!--logger name="org.hibernate.SQL" level="debug" /> <logger name="org.hibernate.type" level="trace" /-->
+	<logger name="org.hibernate.SQL" level="debug" /> <logger name="org.hibernate.type" level="trace" />
 
-	<!--logger name="net.os.goodcourses.service.impl" level="debug" />
+	<logger name="net.os.goodcourses.service.impl" level="debug" />
 
-	<logger name="net.os.goodcourses.controller" level="debug" /-->
+	<logger name="net.os.goodcourses.controller" level="debug" />
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
