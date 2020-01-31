@@ -60,11 +60,21 @@ sudo chown root /etc/nginx/sites-available/default
 
 sudo service nginx restart
 
-sudo mkdir /var/resume
-sudo mkdir /var/resume/logs
-sudo chmod -R 777 /var/resume/logs
-sudo mkdir /var/resume/web
-sudo chmod -R 777 /var/resume/web
-sudo ln -s /var/lib/tomcat8/webapps/ROOT/static /var/resume/web
-sudo mkdir /var/resume/web/media
-sudo chmod -R 777 /var/resume/web/media
+sudo mkdir /var/goodcourses
+sudo mkdir /var/goodcourses/elastic-search-data
+sudo chmod -R 777 /var/goodcourses/elastic-search-data
+sudo mkdir /var/goodcourses/logs
+sudo chmod -R 777 /var/goodcourses/logs
+sudo mkdir /var/goodcourses/web
+sudo chmod -R 777 /var/goodcourses/web
+sudo ln -s /var/lib/tomcat8/webapps/ROOT/static /var/goodcourses/web
+sudo mkdir /var/goodcourses/web/media
+sudo chmod -R 777 /var/goodcourses/web/media
+
+# Restart tomcat
+sudo service tomcat8 stop
+sudo service tomcat8 start
+
+# Restart postgre
+sudo service postgresql stop
+sudo service postgresql start
